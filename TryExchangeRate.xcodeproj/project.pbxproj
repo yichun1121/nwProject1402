@@ -21,6 +21,10 @@
 		C9622038191A7198005EDAAB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C962201A191A7198005EDAAB /* UIKit.framework */; };
 		C9622040191A7198005EDAAB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C962203E191A7198005EDAAB /* InfoPlist.strings */; };
 		C9622042191A7198005EDAAB /* TryExchangeRateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9622041191A7198005EDAAB /* TryExchangeRateTests.m */; };
+		C9622052191A7330005EDAAB /* RateListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C9622051191A7330005EDAAB /* RateListTVC.m */; };
+		C9622056191A7703005EDAAB /* TryParse.m in Sources */ = {isa = PBXBuildFile; fileRef = C9622055191A7703005EDAAB /* TryParse.m */; };
+		C9622059191A7CCE005EDAAB /* NWCustCellExchangeRate.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9622058191A7CCE005EDAAB /* NWCustCellExchangeRate.xib */; };
+		C962205D191A87F1005EDAAB /* NWCustCellExchangeRate.m in Sources */ = {isa = PBXBuildFile; fileRef = C962205C191A87F1005EDAAB /* NWCustCellExchangeRate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,13 @@
 		C962203D191A7198005EDAAB /* TryExchangeRateTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TryExchangeRateTests-Info.plist"; sourceTree = "<group>"; };
 		C962203F191A7198005EDAAB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C9622041191A7198005EDAAB /* TryExchangeRateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TryExchangeRateTests.m; sourceTree = "<group>"; };
+		C9622050191A7330005EDAAB /* RateListTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateListTVC.h; sourceTree = "<group>"; };
+		C9622051191A7330005EDAAB /* RateListTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateListTVC.m; sourceTree = "<group>"; };
+		C9622054191A7703005EDAAB /* TryParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TryParse.h; sourceTree = "<group>"; };
+		C9622055191A7703005EDAAB /* TryParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TryParse.m; sourceTree = "<group>"; };
+		C9622058191A7CCE005EDAAB /* NWCustCellExchangeRate.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NWCustCellExchangeRate.xib; sourceTree = "<group>"; };
+		C962205B191A87F1005EDAAB /* NWCustCellExchangeRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NWCustCellExchangeRate.h; path = NWCust/NWCustCellExchangeRate.h; sourceTree = "<group>"; };
+		C962205C191A87F1005EDAAB /* NWCustCellExchangeRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NWCustCellExchangeRate.m; path = NWCust/NWCustCellExchangeRate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,9 +125,11 @@
 			children = (
 				C9622025191A7198005EDAAB /* nwAppDelegate.h */,
 				C9622026191A7198005EDAAB /* nwAppDelegate.m */,
-				C9622028191A7198005EDAAB /* Main.storyboard */,
-				C962202B191A7198005EDAAB /* nwViewController.h */,
-				C962202C191A7198005EDAAB /* nwViewController.m */,
+				C9622057191A7C33005EDAAB /* CustView */,
+				C9622053191A76CD005EDAAB /* Model */,
+				C962204B191A71CD005EDAAB /* View */,
+				C962204C191A71E8005EDAAB /* Controller */,
+				C962205A191A879B005EDAAB /* CustController */,
 				C962202E191A7198005EDAAB /* Images.xcassets */,
 				C962201D191A7198005EDAAB /* Supporting Files */,
 			);
@@ -150,6 +163,51 @@
 				C962203E191A7198005EDAAB /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C962204B191A71CD005EDAAB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C9622028191A7198005EDAAB /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		C962204C191A71E8005EDAAB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C962202B191A7198005EDAAB /* nwViewController.h */,
+				C962202C191A7198005EDAAB /* nwViewController.m */,
+				C9622050191A7330005EDAAB /* RateListTVC.h */,
+				C9622051191A7330005EDAAB /* RateListTVC.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		C9622053191A76CD005EDAAB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C9622054191A7703005EDAAB /* TryParse.h */,
+				C9622055191A7703005EDAAB /* TryParse.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		C9622057191A7C33005EDAAB /* CustView */ = {
+			isa = PBXGroup;
+			children = (
+				C9622058191A7CCE005EDAAB /* NWCustCellExchangeRate.xib */,
+			);
+			name = CustView;
+			sourceTree = "<group>";
+		};
+		C962205A191A879B005EDAAB /* CustController */ = {
+			isa = PBXGroup;
+			children = (
+				C962205B191A87F1005EDAAB /* NWCustCellExchangeRate.h */,
+				C962205C191A87F1005EDAAB /* NWCustCellExchangeRate.m */,
+			);
+			name = CustController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +289,7 @@
 			files = (
 				C962202F191A7198005EDAAB /* Images.xcassets in Resources */,
 				C9622021191A7198005EDAAB /* InfoPlist.strings in Resources */,
+				C9622059191A7CCE005EDAAB /* NWCustCellExchangeRate.xib in Resources */,
 				C962202A191A7198005EDAAB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,7 +311,10 @@
 			files = (
 				C9622023191A7198005EDAAB /* main.m in Sources */,
 				C9622027191A7198005EDAAB /* nwAppDelegate.m in Sources */,
+				C9622052191A7330005EDAAB /* RateListTVC.m in Sources */,
 				C962202D191A7198005EDAAB /* nwViewController.m in Sources */,
+				C962205D191A87F1005EDAAB /* NWCustCellExchangeRate.m in Sources */,
+				C9622056191A7703005EDAAB /* TryParse.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

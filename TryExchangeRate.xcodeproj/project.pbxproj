@@ -1,0 +1,472 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C9622017191A7198005EDAAB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9622016191A7198005EDAAB /* Foundation.framework */; };
+		C9622019191A7198005EDAAB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9622018191A7198005EDAAB /* CoreGraphics.framework */; };
+		C962201B191A7198005EDAAB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C962201A191A7198005EDAAB /* UIKit.framework */; };
+		C9622021191A7198005EDAAB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C962201F191A7198005EDAAB /* InfoPlist.strings */; };
+		C9622023191A7198005EDAAB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9622022191A7198005EDAAB /* main.m */; };
+		C9622027191A7198005EDAAB /* nwAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9622026191A7198005EDAAB /* nwAppDelegate.m */; };
+		C962202A191A7198005EDAAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9622028191A7198005EDAAB /* Main.storyboard */; };
+		C962202D191A7198005EDAAB /* nwViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C962202C191A7198005EDAAB /* nwViewController.m */; };
+		C962202F191A7198005EDAAB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C962202E191A7198005EDAAB /* Images.xcassets */; };
+		C9622036191A7198005EDAAB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9622035191A7198005EDAAB /* XCTest.framework */; };
+		C9622037191A7198005EDAAB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9622016191A7198005EDAAB /* Foundation.framework */; };
+		C9622038191A7198005EDAAB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C962201A191A7198005EDAAB /* UIKit.framework */; };
+		C9622040191A7198005EDAAB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C962203E191A7198005EDAAB /* InfoPlist.strings */; };
+		C9622042191A7198005EDAAB /* TryExchangeRateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9622041191A7198005EDAAB /* TryExchangeRateTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C9622039191A7198005EDAAB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C962200B191A7198005EDAAB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C9622012191A7198005EDAAB;
+			remoteInfo = TryExchangeRate;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C9622013191A7198005EDAAB /* TryExchangeRate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TryExchangeRate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9622016191A7198005EDAAB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C9622018191A7198005EDAAB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C962201A191A7198005EDAAB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C962201E191A7198005EDAAB /* TryExchangeRate-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TryExchangeRate-Info.plist"; sourceTree = "<group>"; };
+		C9622020191A7198005EDAAB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C9622022191A7198005EDAAB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C9622024191A7198005EDAAB /* TryExchangeRate-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TryExchangeRate-Prefix.pch"; sourceTree = "<group>"; };
+		C9622025191A7198005EDAAB /* nwAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = nwAppDelegate.h; sourceTree = "<group>"; };
+		C9622026191A7198005EDAAB /* nwAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = nwAppDelegate.m; sourceTree = "<group>"; };
+		C9622029191A7198005EDAAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C962202B191A7198005EDAAB /* nwViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = nwViewController.h; sourceTree = "<group>"; };
+		C962202C191A7198005EDAAB /* nwViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = nwViewController.m; sourceTree = "<group>"; };
+		C962202E191A7198005EDAAB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C9622034191A7198005EDAAB /* TryExchangeRateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TryExchangeRateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9622035191A7198005EDAAB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C962203D191A7198005EDAAB /* TryExchangeRateTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TryExchangeRateTests-Info.plist"; sourceTree = "<group>"; };
+		C962203F191A7198005EDAAB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C9622041191A7198005EDAAB /* TryExchangeRateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TryExchangeRateTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C9622010191A7198005EDAAB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9622019191A7198005EDAAB /* CoreGraphics.framework in Frameworks */,
+				C962201B191A7198005EDAAB /* UIKit.framework in Frameworks */,
+				C9622017191A7198005EDAAB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9622031191A7198005EDAAB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9622036191A7198005EDAAB /* XCTest.framework in Frameworks */,
+				C9622038191A7198005EDAAB /* UIKit.framework in Frameworks */,
+				C9622037191A7198005EDAAB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C962200A191A7198005EDAAB = {
+			isa = PBXGroup;
+			children = (
+				C962201C191A7198005EDAAB /* TryExchangeRate */,
+				C962203B191A7198005EDAAB /* TryExchangeRateTests */,
+				C9622015191A7198005EDAAB /* Frameworks */,
+				C9622014191A7198005EDAAB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C9622014191A7198005EDAAB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C9622013191A7198005EDAAB /* TryExchangeRate.app */,
+				C9622034191A7198005EDAAB /* TryExchangeRateTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C9622015191A7198005EDAAB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C9622016191A7198005EDAAB /* Foundation.framework */,
+				C9622018191A7198005EDAAB /* CoreGraphics.framework */,
+				C962201A191A7198005EDAAB /* UIKit.framework */,
+				C9622035191A7198005EDAAB /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C962201C191A7198005EDAAB /* TryExchangeRate */ = {
+			isa = PBXGroup;
+			children = (
+				C9622025191A7198005EDAAB /* nwAppDelegate.h */,
+				C9622026191A7198005EDAAB /* nwAppDelegate.m */,
+				C9622028191A7198005EDAAB /* Main.storyboard */,
+				C962202B191A7198005EDAAB /* nwViewController.h */,
+				C962202C191A7198005EDAAB /* nwViewController.m */,
+				C962202E191A7198005EDAAB /* Images.xcassets */,
+				C962201D191A7198005EDAAB /* Supporting Files */,
+			);
+			path = TryExchangeRate;
+			sourceTree = "<group>";
+		};
+		C962201D191A7198005EDAAB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C962201E191A7198005EDAAB /* TryExchangeRate-Info.plist */,
+				C962201F191A7198005EDAAB /* InfoPlist.strings */,
+				C9622022191A7198005EDAAB /* main.m */,
+				C9622024191A7198005EDAAB /* TryExchangeRate-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C962203B191A7198005EDAAB /* TryExchangeRateTests */ = {
+			isa = PBXGroup;
+			children = (
+				C9622041191A7198005EDAAB /* TryExchangeRateTests.m */,
+				C962203C191A7198005EDAAB /* Supporting Files */,
+			);
+			path = TryExchangeRateTests;
+			sourceTree = "<group>";
+		};
+		C962203C191A7198005EDAAB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C962203D191A7198005EDAAB /* TryExchangeRateTests-Info.plist */,
+				C962203E191A7198005EDAAB /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C9622012191A7198005EDAAB /* TryExchangeRate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9622045191A7198005EDAAB /* Build configuration list for PBXNativeTarget "TryExchangeRate" */;
+			buildPhases = (
+				C962200F191A7198005EDAAB /* Sources */,
+				C9622010191A7198005EDAAB /* Frameworks */,
+				C9622011191A7198005EDAAB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TryExchangeRate;
+			productName = TryExchangeRate;
+			productReference = C9622013191A7198005EDAAB /* TryExchangeRate.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C9622033191A7198005EDAAB /* TryExchangeRateTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9622048191A7198005EDAAB /* Build configuration list for PBXNativeTarget "TryExchangeRateTests" */;
+			buildPhases = (
+				C9622030191A7198005EDAAB /* Sources */,
+				C9622031191A7198005EDAAB /* Frameworks */,
+				C9622032191A7198005EDAAB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C962203A191A7198005EDAAB /* PBXTargetDependency */,
+			);
+			name = TryExchangeRateTests;
+			productName = TryExchangeRateTests;
+			productReference = C9622034191A7198005EDAAB /* TryExchangeRateTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C962200B191A7198005EDAAB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = nw;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = nw;
+				TargetAttributes = {
+					C9622033191A7198005EDAAB = {
+						TestTargetID = C9622012191A7198005EDAAB;
+					};
+				};
+			};
+			buildConfigurationList = C962200E191A7198005EDAAB /* Build configuration list for PBXProject "TryExchangeRate" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C962200A191A7198005EDAAB;
+			productRefGroup = C9622014191A7198005EDAAB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C9622012191A7198005EDAAB /* TryExchangeRate */,
+				C9622033191A7198005EDAAB /* TryExchangeRateTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C9622011191A7198005EDAAB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C962202F191A7198005EDAAB /* Images.xcassets in Resources */,
+				C9622021191A7198005EDAAB /* InfoPlist.strings in Resources */,
+				C962202A191A7198005EDAAB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9622032191A7198005EDAAB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9622040191A7198005EDAAB /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C962200F191A7198005EDAAB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9622023191A7198005EDAAB /* main.m in Sources */,
+				C9622027191A7198005EDAAB /* nwAppDelegate.m in Sources */,
+				C962202D191A7198005EDAAB /* nwViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9622030191A7198005EDAAB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9622042191A7198005EDAAB /* TryExchangeRateTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C962203A191A7198005EDAAB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C9622012191A7198005EDAAB /* TryExchangeRate */;
+			targetProxy = C9622039191A7198005EDAAB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C962201F191A7198005EDAAB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9622020191A7198005EDAAB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C9622028191A7198005EDAAB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9622029191A7198005EDAAB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C962203E191A7198005EDAAB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C962203F191A7198005EDAAB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C9622043191A7198005EDAAB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C9622044191A7198005EDAAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C9622046191A7198005EDAAB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TryExchangeRate/TryExchangeRate-Prefix.pch";
+				INFOPLIST_FILE = "TryExchangeRate/TryExchangeRate-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C9622047191A7198005EDAAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TryExchangeRate/TryExchangeRate-Prefix.pch";
+				INFOPLIST_FILE = "TryExchangeRate/TryExchangeRate-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		C9622049191A7198005EDAAB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TryExchangeRate.app/TryExchangeRate";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TryExchangeRate/TryExchangeRate-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "TryExchangeRateTests/TryExchangeRateTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		C962204A191A7198005EDAAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TryExchangeRate.app/TryExchangeRate";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TryExchangeRate/TryExchangeRate-Prefix.pch";
+				INFOPLIST_FILE = "TryExchangeRateTests/TryExchangeRateTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C962200E191A7198005EDAAB /* Build configuration list for PBXProject "TryExchangeRate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9622043191A7198005EDAAB /* Debug */,
+				C9622044191A7198005EDAAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9622045191A7198005EDAAB /* Build configuration list for PBXNativeTarget "TryExchangeRate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9622046191A7198005EDAAB /* Debug */,
+				C9622047191A7198005EDAAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C9622048191A7198005EDAAB /* Build configuration list for PBXNativeTarget "TryExchangeRateTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9622049191A7198005EDAAB /* Debug */,
+				C962204A191A7198005EDAAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C962200B191A7198005EDAAB /* Project object */;
+}

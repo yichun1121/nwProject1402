@@ -25,6 +25,8 @@
 		C9622056191A7703005EDAAB /* TryParse.m in Sources */ = {isa = PBXBuildFile; fileRef = C9622055191A7703005EDAAB /* TryParse.m */; };
 		C9622059191A7CCE005EDAAB /* NWCustCellExchangeRate.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9622058191A7CCE005EDAAB /* NWCustCellExchangeRate.xib */; };
 		C962205D191A87F1005EDAAB /* NWCustCellExchangeRate.m in Sources */ = {isa = PBXBuildFile; fileRef = C962205C191A87F1005EDAAB /* NWCustCellExchangeRate.m */; };
+		C9622060191B2CB5005EDAAB /* TryLoadURL.m in Sources */ = {isa = PBXBuildFile; fileRef = C962205F191B2CB5005EDAAB /* TryLoadURL.m */; };
+		C9622069191E91FF005EDAAB /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = C9622068191E91FF005EDAAB /* Currency.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,10 @@
 		C9622058191A7CCE005EDAAB /* NWCustCellExchangeRate.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NWCustCellExchangeRate.xib; sourceTree = "<group>"; };
 		C962205B191A87F1005EDAAB /* NWCustCellExchangeRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NWCustCellExchangeRate.h; path = NWCust/NWCustCellExchangeRate.h; sourceTree = "<group>"; };
 		C962205C191A87F1005EDAAB /* NWCustCellExchangeRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NWCustCellExchangeRate.m; path = NWCust/NWCustCellExchangeRate.m; sourceTree = "<group>"; };
+		C962205E191B2CB5005EDAAB /* TryLoadURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TryLoadURL.h; sourceTree = "<group>"; };
+		C962205F191B2CB5005EDAAB /* TryLoadURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TryLoadURL.m; sourceTree = "<group>"; };
+		C9622067191E91FF005EDAAB /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Currency.h; sourceTree = "<group>"; };
+		C9622068191E91FF005EDAAB /* Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Currency.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +195,10 @@
 			children = (
 				C9622054191A7703005EDAAB /* TryParse.h */,
 				C9622055191A7703005EDAAB /* TryParse.m */,
+				C962205E191B2CB5005EDAAB /* TryLoadURL.h */,
+				C962205F191B2CB5005EDAAB /* TryLoadURL.m */,
+				C9622067191E91FF005EDAAB /* Currency.h */,
+				C9622068191E91FF005EDAAB /* Currency.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -309,8 +319,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9622069191E91FF005EDAAB /* Currency.m in Sources */,
 				C9622023191A7198005EDAAB /* main.m in Sources */,
 				C9622027191A7198005EDAAB /* nwAppDelegate.m in Sources */,
+				C9622060191B2CB5005EDAAB /* TryLoadURL.m in Sources */,
 				C9622052191A7330005EDAAB /* RateListTVC.m in Sources */,
 				C962202D191A7198005EDAAB /* nwViewController.m in Sources */,
 				C962205D191A87F1005EDAAB /* NWCustCellExchangeRate.m in Sources */,

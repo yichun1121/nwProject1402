@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RateListTVC : UITableViewController
+@interface RateListTVC : UITableViewController<NSURLSessionDelegate,UIDocumentInteractionControllerDelegate>
 
 @end

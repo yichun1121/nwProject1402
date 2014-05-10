@@ -10,4 +10,7 @@
 
 @interface TryParse : NSObject
 -(void)tryAppleOfficalSample;
+-(void)tryTaiwanBankHTML;
+-(void)tryTaiwanBankHTMLIntoDouble;
+-(void)tryGetImgURL;
 @end

@@ -41,9 +41,10 @@
         }
     }
 
-}-(void)tryTaiwanBankHTML{
+}
+-(void)tryTaiwanBankHTML{
     
-    NSString *exampleString =@"<table title=\"牌告匯率\"><tr class=\"color0\"><td class=\"titleLeft\"><img class=\"paddingLeft16\" src=\"/Images/Flags/America.gif\" title=\"\" alt=\"\" />&nbsp;美金 (USD)</td><td class=\"decimal\">29.75500</td><td class=\"decimal\">30.29700</td><td class=\"decimal\">30.05500</td><td class=\"decimal\">30.15500</td><td class=\"link\" colspan=\"1\"><a href=\"/Pages/UIP003/UIP0031.aspx?lang=zh-TW&static=open&whom=USD&date=2014-05-07T16:02:31&type=L\">查詢</a></td><td class=\"link\" colspan=\"1\"><a target='_blank'href=\"/Pages/UIP004/UIP004INQ1.aspx?lang=zh-TW&whom3=USD\">查詢</a></td></tr></table>";
+    NSString *exampleString =@"<table title=\"牌告匯率\"><tr class=\"color0\"><td class=\"titleLeft\"><img class=\"paddingLeft16\" src=\"/Images/Flags/America.gif\" title=\"\" alt=\"\" />&nbsp;美金 (USD)</td><td class=\"decimal\">29.75500</td><td class=\"decimal\">30.29700</td><td class=\"decimal\">30.05500</td><td class=\"decimal\">30.15500</td><td class=\"link\" colspan=\"1\"><a href=\"/Pages/UIP003/UIP0031.aspx?lang=zh-TW&static=open&whom=USD&date=2014-05-07T16:02:31&type=L\">查詢</a></td><td class=\"link\" colspan=\"1\"><a target='_blank'href=\"/Pages/UIP004/UIP004INQ1.aspx?lang=zh-TW&whom3=USD\">查詢</a></td></tr><tr class=\"color1\"><td class=\"titleLeft\"><img class=\"paddingLeft16\" src=\"/Images/Flags/HongKong.gif\" title=\"\" alt=\"\" />&nbsp;港幣 (HKD)</td><td class=\"decimal\">3.74300</td><td class=\"decimal\">3.92400</td><td class=\"decimal\">3.85300</td><td class=\"decimal\">3.91300</td><td class=\"link\" colspan=\"1\"><a href=\"/Pages/UIP003/UIP0031.aspx?lang=zh-TW&static=open&whom=HKD&date=2014-05-07T16:02:31&type=L\">查詢</a></td><td class=\"link\" colspan=\"1\"><a target='_blank' href=\"/Pages/UIP004/UIP004INQ1.aspx?lang=zh-TW&whom3=HKD\">查詢</a></td></tr></table>";
     
     NSString *currencyName;
     NSString *currencyCode;
@@ -55,99 +56,114 @@
     NSString *htmlString = exampleString;
     NSScanner *theScanner = [NSScanner scannerWithString:htmlString];
 
-    NSString *tagTable=@"<table title=\"牌告匯率\">";
+    NSString *tagTableFront=@"<table title=\"牌告匯率\">";
     NSString *tagBeforeName=@".gif\" title=\"\" alt=\"\" />&nbsp;";
     NSString *tagAfterNameBeforeCode=@" (";
     NSCharacterSet *bracketRightSet = [NSCharacterSet characterSetWithCharactersInString:@")"];
     NSString *tagBeforeDecimal=@"<td class=\"decimal\">";
     NSString *tagAfterDecimal=@"</td>";
+    NSString *tagTableAfter=@"</table>";
     
+    NSInteger tagLocationTableFront=0;
+    NSInteger tagLocationTableAfter=0;
 
     NSLog(@"scan location: %lu",(unsigned long)[theScanner scanLocation] );
-    [theScanner scanUpToString:tagTable intoString:nil];
+    [theScanner scanUpToString:tagTableFront intoString:nil];
+    tagLocationTableFront=[theScanner scanLocation];    //記錄table起始位置
     NSLog(@"scan location: %lu",(unsigned long)[theScanner scanLocation] );
-    if (![theScanner isAtEnd]) {
-        //-----幣別中文-----
-        [theScanner scanUpToString:tagBeforeName intoString:nil];
-        NSLog(@"scan location: %lu",(unsigned long)[theScanner scanLocation] );
-        [theScanner setScanLocation: [theScanner scanLocation]+tagBeforeName.length];
-        [theScanner scanUpToString:tagAfterNameBeforeCode intoString:&currencyName];
-        NSLog(@"scan location:%@ %lu",currencyName,(unsigned long)[theScanner scanLocation] );
-        //-----幣別代碼-----
-        [theScanner setScanLocation: [theScanner scanLocation]+tagAfterNameBeforeCode.length];
-        [theScanner scanUpToCharactersFromSet:bracketRightSet intoString:&currencyCode];
-        NSLog(@"scan location:%@ %lu",currencyCode,(unsigned long)[theScanner scanLocation] );
-        
-        //-----匯率-----
-/*
-        NSLog(@"匯率");
-        //decimal
-        [theScanner scanUpToString:tagBeforeDecimal intoString:nil];
-        NSLog(@"scan location: %lu",(unsigned long)[theScanner scanLocation] );
-        [theScanner setScanLocation: [theScanner scanLocation]+tagBeforeDecimal.length];
-        NSLog(@"scan location:+ %lu",(unsigned long)[theScanner scanLocation] );
-        [theScanner scanUpToString:tagAfterDecimal intoString:&cashBuying];
-        NSLog(@"scan location:%@ %lu",cashBuying,(unsigned long)[theScanner scanLocation] );
-        //decimal
-        [theScanner scanUpToString:tagBeforeDecimal intoString:nil];
-        NSLog(@"scan location: %lu",(unsigned long)[theScanner scanLocation] );
-        [theScanner setScanLocation: [theScanner scanLocation]+tagBeforeDecimal.length];
-        NSLog(@"scan location:+ %lu",(unsigned long)[theScanner scanLocation] );
-        [theScanner scanUpToString:tagAfterDecimal intoString:&cashSelling];
-        NSLog(@"scan location:%@ %lu",cashSelling,(unsigned long)[theScanner scanLocation] );
-        //decimal
-        [theScanner scanUpToString:tagBeforeDecimal intoString:nil];
-        NSLog(@"scan location: %lu",(unsigned long)[theScanner scanLocation] );
-        [theScanner setScanLocation: [theScanner scanLocation]+tagBeforeDecimal.length];
-        NSLog(@"scan location:+ %lu",(unsigned long)[theScanner scanLocation] );
-        [theScanner scanUpToString:tagAfterDecimal intoString:&spotBuying];
-        NSLog(@"scan location:%@ %lu",spotBuying,(unsigned long)[theScanner scanLocation] );
-        //decimal
-        [theScanner scanUpToString:tagBeforeDecimal intoString:nil];
-        NSLog(@"scan location: %lu",(unsigned long)[theScanner scanLocation] );
-        [theScanner setScanLocation: [theScanner scanLocation]+tagBeforeDecimal.length];
-        NSLog(@"scan location:+ %lu",(unsigned long)[theScanner scanLocation] );
-        [theScanner scanUpToString:tagAfterDecimal intoString:&spotSelling];
-        NSLog(@"scan location:%@ %lu",spotSelling,(unsigned long)[theScanner scanLocation] );
-*/
-        
-        
-        int indexRate=0;
-        while(indexRate<4) {
-            NSString *rateString;
-            @try {
-                [theScanner scanUpToString:tagBeforeDecimal intoString:nil];
-                [theScanner setScanLocation: [theScanner scanLocation]+tagBeforeDecimal.length];
-                [theScanner scanUpToString:tagAfterDecimal intoString:&rateString];
-                NSLog(@"scan location:%@ %lu",rateString,(unsigned long)[theScanner scanLocation] );
-                switch (indexRate) {
-                    case 0:
-                        cashBuying=rateString;
-                        break;
-                    case 1:
-                        cashSelling=rateString;
-                        break;
-                    case 2:
-                        spotBuying=rateString;
-                        break;
-                    case 3:
-                        spotSelling=rateString;
-                        break;
+    [theScanner scanUpToString:tagTableAfter intoString:nil];
+    tagLocationTableAfter=[theScanner scanLocation];    //記錄table結束位置（以便判斷找完沒）
+    NSLog(@"scan location: %lu",(unsigned long)[theScanner scanLocation] );
+    //回到起始位置準備開始掃描
+    theScanner.scanLocation=tagLocationTableFront;
+    while (![theScanner isAtEnd]) {
+        //TODO:不知為什麼，全部幣別都抓完後再抓tagBeforeName仍然會有資料，所以只好檢查scanLocation，超出table範圍就跳出
+        while ([theScanner scanUpToString:tagBeforeName intoString:nil]&&theScanner.scanLocation<tagLocationTableAfter) {
+            //-----幣別中文-----
+            [theScanner scanUpToString:tagBeforeName intoString:nil];
+            NSLog(@"scan location:before name %lu",(unsigned long)[theScanner scanLocation] );
+
+            [theScanner setScanLocation: [theScanner scanLocation]+tagBeforeName.length];
+            [theScanner scanUpToString:tagAfterNameBeforeCode intoString:&currencyName];
+            NSLog(@"scan location:%@ %lu",currencyName,(unsigned long)[theScanner scanLocation] );
+            //-----幣別代碼-----
+            [theScanner setScanLocation: [theScanner scanLocation]+tagAfterNameBeforeCode.length];
+            [theScanner scanUpToCharactersFromSet:bracketRightSet intoString:&currencyCode];
+            NSLog(@"scan location:%@ %lu",currencyCode,(unsigned long)[theScanner scanLocation] );
+            
+            //-----匯率-----
+    /*
+            NSLog(@"匯率");
+            //decimal
+            [theScanner scanUpToString:tagBeforeDecimal intoString:nil];
+            NSLog(@"scan location: %lu",(unsigned long)[theScanner scanLocation] );
+            [theScanner setScanLocation: [theScanner scanLocation]+tagBeforeDecimal.length];
+            NSLog(@"scan location:+ %lu",(unsigned long)[theScanner scanLocation] );
+            [theScanner scanUpToString:tagAfterDecimal intoString:&cashBuying];
+            NSLog(@"scan location:%@ %lu",cashBuying,(unsigned long)[theScanner scanLocation] );
+            //decimal
+            [theScanner scanUpToString:tagBeforeDecimal intoString:nil];
+            NSLog(@"scan location: %lu",(unsigned long)[theScanner scanLocation] );
+            [theScanner setScanLocation: [theScanner scanLocation]+tagBeforeDecimal.length];
+            NSLog(@"scan location:+ %lu",(unsigned long)[theScanner scanLocation] );
+            [theScanner scanUpToString:tagAfterDecimal intoString:&cashSelling];
+            NSLog(@"scan location:%@ %lu",cashSelling,(unsigned long)[theScanner scanLocation] );
+            //decimal
+            [theScanner scanUpToString:tagBeforeDecimal intoString:nil];
+            NSLog(@"scan location: %lu",(unsigned long)[theScanner scanLocation] );
+            [theScanner setScanLocation: [theScanner scanLocation]+tagBeforeDecimal.length];
+            NSLog(@"scan location:+ %lu",(unsigned long)[theScanner scanLocation] );
+            [theScanner scanUpToString:tagAfterDecimal intoString:&spotBuying];
+            NSLog(@"scan location:%@ %lu",spotBuying,(unsigned long)[theScanner scanLocation] );
+            //decimal
+            [theScanner scanUpToString:tagBeforeDecimal intoString:nil];
+            NSLog(@"scan location: %lu",(unsigned long)[theScanner scanLocation] );
+            [theScanner setScanLocation: [theScanner scanLocation]+tagBeforeDecimal.length];
+            NSLog(@"scan location:+ %lu",(unsigned long)[theScanner scanLocation] );
+            [theScanner scanUpToString:tagAfterDecimal intoString:&spotSelling];
+            NSLog(@"scan location:%@ %lu",spotSelling,(unsigned long)[theScanner scanLocation] );
+    */
+            int indexRate=0;
+            while(indexRate<4) {
+                NSString *rateString;
+                @try {
+                    [theScanner scanUpToString:tagBeforeDecimal intoString:nil];
+                    [theScanner setScanLocation: [theScanner scanLocation]+tagBeforeDecimal.length];
+                    [theScanner scanUpToString:tagAfterDecimal intoString:&rateString];
+                    NSLog(@"scan location:%@ %lu",rateString,(unsigned long)[theScanner scanLocation] );
+                    switch (indexRate) {
+                        case 0:
+                            cashBuying=rateString;
+                            break;
+                        case 1:
+                            cashSelling=rateString;
+                            break;
+                        case 2:
+                            spotBuying=rateString;
+                            break;
+                        case 3:
+                            spotSelling=rateString;
+                            break;
+                    }
+                    indexRate++;
                 }
-                indexRate++;
+                @catch (NSException *exception) {
+                    NSLog(@"NSScanner error when getting rate at index=%i.",indexRate);
+                    break;  //有問題就跳出回圈
+                }
             }
-            @catch (NSException *exception) {
-                NSLog(@"NSScanner error when getting rate at index=%i.",indexRate);
-                break;  //有問題就跳出回圈
+            if(indexRate!=4){
+                //代表四個匯率中有一個以上有問題
+                NSString *errorRate=@"x";
+                cashBuying=errorRate;
+                cashSelling=errorRate;
+                spotBuying=errorRate;
+                spotSelling=errorRate;
             }
         }
-        if(indexRate!=4){
-            //代表四個匯率中有一個以上有問題
-            NSString *errorRate=@"x";
-            cashBuying=errorRate;
-            cashSelling=errorRate;
-            spotBuying=errorRate;
-            spotSelling=errorRate;
+        if (theScanner.scanLocation>tagLocationTableAfter) {
+            //超出牌告匯率table範圍，上面的while就不會作用，可以直接break跳出
+            break;
         }
     }
     NSLog(@"-----%@, %@-----cashSelling:%@",currencyName,currencyCode,cashSelling);

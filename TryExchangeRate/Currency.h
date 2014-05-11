@@ -11,10 +11,10 @@
 @interface Currency : NSObject
 @property NSString *name;
 @property NSString *codeISO;
-@property NSDecimal *spotBuyingRate;
-@property NSDecimal *spotSellingRate;
-@property NSDecimal *cashBuyingRate;
-@property NSDecimal *cashSellingRate;
+@property NSString *spotBuyingRate;
+@property NSString *spotSellingRate;
+@property NSString *cashBuyingRate;
+@property NSString *cashSellingRate;
 
 -(id)initWithName:(NSString *)currencyName ISOCode:(NSString *)currencyISOCode;
 

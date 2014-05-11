@@ -27,6 +27,7 @@
 		C962205D191A87F1005EDAAB /* NWCustCellExchangeRate.m in Sources */ = {isa = PBXBuildFile; fileRef = C962205C191A87F1005EDAAB /* NWCustCellExchangeRate.m */; };
 		C9622060191B2CB5005EDAAB /* TryLoadURL.m in Sources */ = {isa = PBXBuildFile; fileRef = C962205F191B2CB5005EDAAB /* TryLoadURL.m */; };
 		C9622069191E91FF005EDAAB /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = C9622068191E91FF005EDAAB /* Currency.m */; };
+		C962206C191E931D005EDAAB /* ParseTaiwanBank.m in Sources */ = {isa = PBXBuildFile; fileRef = C962206B191E931D005EDAAB /* ParseTaiwanBank.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,8 @@
 		C962205F191B2CB5005EDAAB /* TryLoadURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TryLoadURL.m; sourceTree = "<group>"; };
 		C9622067191E91FF005EDAAB /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Currency.h; sourceTree = "<group>"; };
 		C9622068191E91FF005EDAAB /* Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Currency.m; sourceTree = "<group>"; };
+		C962206A191E931D005EDAAB /* ParseTaiwanBank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseTaiwanBank.h; sourceTree = "<group>"; };
+		C962206B191E931D005EDAAB /* ParseTaiwanBank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseTaiwanBank.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +202,8 @@
 				C962205F191B2CB5005EDAAB /* TryLoadURL.m */,
 				C9622067191E91FF005EDAAB /* Currency.h */,
 				C9622068191E91FF005EDAAB /* Currency.m */,
+				C962206A191E931D005EDAAB /* ParseTaiwanBank.h */,
+				C962206B191E931D005EDAAB /* ParseTaiwanBank.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -323,6 +328,7 @@
 				C9622023191A7198005EDAAB /* main.m in Sources */,
 				C9622027191A7198005EDAAB /* nwAppDelegate.m in Sources */,
 				C9622060191B2CB5005EDAAB /* TryLoadURL.m in Sources */,
+				C962206C191E931D005EDAAB /* ParseTaiwanBank.m in Sources */,
 				C9622052191A7330005EDAAB /* RateListTVC.m in Sources */,
 				C962202D191A7198005EDAAB /* nwViewController.m in Sources */,
 				C962205D191A87F1005EDAAB /* NWCustCellExchangeRate.m in Sources */,

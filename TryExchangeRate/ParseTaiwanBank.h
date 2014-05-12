@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface ParseTaiwanBank : NSObject
-
+-(NSSet *)getExchangeRateFromTaiwanBankRateString:(NSString *)htmlString;
+@property NSArray * currencyArray;
+@property NSString *updateDayTimeString;
 @end

@@ -3,11 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "star_clear_grayyellow_32.png"
+      "filename" : "cash_32.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "cash_48.png"
     }
   ],
   "info" : {

@@ -27,11 +27,6 @@
     }
     return _favoritePlistFilePath;
 }
--(ParseTaiwanBank *)init{
-    self=[super init];
-    
-    return self;
-}
 -(NSSet *)favoriteCurrencyCode{
     if (!_favoriteCurrencyCode) {
         [self loadFavoritePlist];

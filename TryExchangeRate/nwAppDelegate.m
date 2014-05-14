@@ -7,9 +7,17 @@
 //
 
 #import "nwAppDelegate.h"
-
+#import "ParseTaiwanBank.h"
+@interface nwAppDelegate()
+@end
 @implementation nwAppDelegate
-
+@synthesize twBank=_twBank;
+-(ParseTaiwanBank *)twBank{
+    if (!_twBank) {
+        _twBank=[ParseTaiwanBank new];
+    }
+    return _twBank;
+}
 - (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier
   completionHandler:(void (^)())completionHandler {
 	self.backgroundSessionCompletionHandler = completionHandler;

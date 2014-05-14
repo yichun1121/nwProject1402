@@ -29,6 +29,7 @@
 		C9622069191E91FF005EDAAB /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = C9622068191E91FF005EDAAB /* Currency.m */; };
 		C962206C191E931D005EDAAB /* ParseTaiwanBank.m in Sources */ = {isa = PBXBuildFile; fileRef = C962206B191E931D005EDAAB /* ParseTaiwanBank.m */; };
 		C96B78A3192219EF004D8A3F /* Favorite.plist in Resources */ = {isa = PBXBuildFile; fileRef = C96B78A2192219EF004D8A3F /* Favorite.plist */; };
+		C96B78A619234E1D004D8A3F /* FavoriteTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C96B78A519234E1D004D8A3F /* FavoriteTVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,8 @@
 		C962206A191E931D005EDAAB /* ParseTaiwanBank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseTaiwanBank.h; sourceTree = "<group>"; };
 		C962206B191E931D005EDAAB /* ParseTaiwanBank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseTaiwanBank.m; sourceTree = "<group>"; };
 		C96B78A2192219EF004D8A3F /* Favorite.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Favorite.plist; sourceTree = "<group>"; };
+		C96B78A419234E1D004D8A3F /* FavoriteTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteTVC.h; sourceTree = "<group>"; };
+		C96B78A519234E1D004D8A3F /* FavoriteTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteTVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +195,8 @@
 				C962202C191A7198005EDAAB /* nwViewController.m */,
 				C9622050191A7330005EDAAB /* RateListTVC.h */,
 				C9622051191A7330005EDAAB /* RateListTVC.m */,
+				C96B78A419234E1D004D8A3F /* FavoriteTVC.h */,
+				C96B78A519234E1D004D8A3F /* FavoriteTVC.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9622069191E91FF005EDAAB /* Currency.m in Sources */,
+				C96B78A619234E1D004D8A3F /* FavoriteTVC.m in Sources */,
 				C9622023191A7198005EDAAB /* main.m in Sources */,
 				C9622027191A7198005EDAAB /* nwAppDelegate.m in Sources */,
 				C9622060191B2CB5005EDAAB /* TryLoadURL.m in Sources */,

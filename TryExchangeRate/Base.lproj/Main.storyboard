@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Qtn-Vr-xHZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="wOf-oT-tMB">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - 臺灣銀行-->
         <scene sceneID="Fk8-E9-sAh">
             <objects>
                 <navigationController definesPresentationContext="YES" id="Qtn-Vr-xHZ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="臺灣銀行" image="bank" id="SX4-d7-L5r"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vdh-Xn-3V4">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -17,7 +18,71 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t2J-Em-DOz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-806" y="-386"/>
+            <point key="canvasLocation" x="-1291" y="82"/>
+        </scene>
+        <!--FavoriteTVC - 我的最愛-->
+        <scene sceneID="f0k-ih-i1u">
+            <objects>
+                <tableViewController id="URY-vr-7zX" customClass="FavoriteTVC" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="G0m-HA-HFW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="qFo-Zs-hJ9">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qFo-Zs-hJ9" id="qnk-HS-3XR">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="URY-vr-7zX" id="5BB-da-Lgy"/>
+                            <outlet property="delegate" destination="URY-vr-7zX" id="98c-cA-lr3"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="我的最愛" id="Mpr-dQ-XBf"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OQV-E2-Kt0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-666" y="-524"/>
+        </scene>
+        <!--Navigation Controller - 我的最愛-->
+        <scene sceneID="nTg-F7-BA8">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="zAQ-XI-jKv" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="我的最愛" image="star" id="NCN-XE-Rat"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z9E-sM-XNR">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="URY-vr-7zX" kind="relationship" relationship="rootViewController" id="uw9-pA-XMN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OyX-TF-y8W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1200" y="-524"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="pHw-Jd-Lny">
+            <objects>
+                <tabBarController definesPresentationContext="YES" id="wOf-oT-tMB" sceneMemberID="viewController">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="UYU-4B-Nn9">
+                        <rect key="frame" x="129" y="330" width="163" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="zAQ-XI-jKv" kind="relationship" relationship="viewControllers" id="ilh-0J-Be5"/>
+                        <segue destination="Qtn-Vr-xHZ" kind="relationship" relationship="viewControllers" id="skm-bh-HoJ"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2D9-BO-Hi0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1825" y="-260"/>
         </scene>
         <!--Rate ListTVC - 最後更新時間-->
         <scene sceneID="bGh-Yd-4VE">
@@ -81,9 +146,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7YE-yQ-uey" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-342" y="-386"/>
+            <point key="canvasLocation" x="-868" y="82"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bank" width="32" height="30"/>
+        <image name="star" width="32" height="32"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

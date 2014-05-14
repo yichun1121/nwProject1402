@@ -23,7 +23,7 @@
 @property (nonatomic)  NSArray *currencyArray;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) IBOutlet UITableView * refreshView;    //(你要下拉更新的TableView)
-@property (nonatomic)  ParseTaiwanBank *twBank;
+
 @end
 static NSString *DownloadURLString =@"http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm";
 @implementation RateListTVC{
@@ -33,13 +33,7 @@ static NSString *DownloadURLString =@"http://rate.bot.com.tw/Pages/Static/UIP003
 
 }
 @synthesize currencyArray=_currencyArray;
-@synthesize twBank=_twBank;
--(ParseTaiwanBank *)twBank{
-    if (!_twBank) {
-        _twBank=[ParseTaiwanBank new];
-    }
-    return _twBank;
-}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -180,7 +174,7 @@ static NSString *DownloadURLString =@"http://rate.bot.com.tw/Pages/Static/UIP003
     }
 	
     //更新進度條...
-    double progress = (double)task.countOfBytesReceived / (double)task.countOfBytesExpectedToReceive;
+    //double progress = (double)task.countOfBytesReceived / (double)task.countOfBytesExpectedToReceive;
 	dispatch_async(dispatch_get_main_queue(), ^{
 		//self.progressView.progress = progress;
         
@@ -225,8 +219,10 @@ static NSString *DownloadURLString =@"http://rate.bot.com.tw/Pages/Static/UIP003
 /*!從臺銀匯率html字串取得Currency陣列
  */
 -(void)pickCurrencyAndRateUpFromHtmlString:(NSString *)htmlString{
-    self.currencyArray=[[self.twBank getExchangeRateFromTaiwanBankRateString:htmlString] allObjects];
-    self.updateDayTime.text=self.twBank.updateDayTimeString;
+    nwAppDelegate *appDelegate = (nwAppDelegate *)[[UIApplication sharedApplication] delegate];
+    ParseTaiwanBank *twBank=appDelegate.twBank;
+    self.currencyArray=[[twBank getExchangeRateFromTaiwanBankRateString:htmlString] allObjects];
+    self.updateDayTime.text=twBank.updateDayTimeString;
     
 }
 // NEWCODE - New method
@@ -364,10 +360,12 @@ static NSString *DownloadURLString =@"http://rate.bot.com.tw/Pages/Static/UIP003
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     Currency *currency=[self.currencyArray objectAtIndex:indexPath.row-1];
     currency.isFavorite=!currency.isFavorite;
+    nwAppDelegate *appDelegate = (nwAppDelegate *)[[UIApplication sharedApplication] delegate];
+    ParseTaiwanBank *twBank=appDelegate.twBank;
     if (currency.isFavorite) {
-        [self.twBank addFavorite:currency.codeISO];
+        [twBank addFavorite:currency.codeISO];
     }else{
-        [self.twBank removeFavorite:currency.codeISO];
+        [twBank removeFavorite:currency.codeISO];
     }
     [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }

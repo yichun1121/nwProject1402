@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ParseTaiwanBank.h"
 @interface nwAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (nonatomic)  ParseTaiwanBank *twBank;
 @property (copy) void (^backgroundSessionCompletionHandler)();
 
 @end

@@ -9,10 +9,76 @@
 #import "ParseTaiwanBank.h"
 #import "Currency.h"
 @interface ParseTaiwanBank()
+@property (nonatomic)  NSSet *favoriteCurrencyCode;
+@property (nonatomic,readonly)NSString *favoritePlistFilePath;
 @end
 @implementation ParseTaiwanBank
 @synthesize currencyArray=_currencyArray;
 @synthesize updateDayTimeString=_updateDayTimeString;
+@synthesize favoriteCurrencyCode=_favoriteCurrencyCode;
+@synthesize favoritePlistFilePath=_favoritePlistFilePath;
+
+
+-(NSString *)favoritePlistFilePath{
+    if (!_favoritePlistFilePath) {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        _favoritePlistFilePath = [documentsDirectory stringByAppendingString:@"/CustFavorite.plist"];
+    }
+    return _favoritePlistFilePath;
+}
+-(ParseTaiwanBank *)init{
+    self=[super init];
+    
+    return self;
+}
+-(NSSet *)favoriteCurrencyCode{
+    if (!_favoriteCurrencyCode) {
+        [self loadFavoritePlist];
+    }
+    return _favoriteCurrencyCode;
+}
+-(void)loadFavoritePlist{
+    NSLog(@"loading favorite plist... @%@",self.class);
+    if ([[NSFileManager new] fileExistsAtPath:self.favoritePlistFilePath]) {
+        NSArray *arrCurrency=[NSArray arrayWithContentsOfFile:self.favoritePlistFilePath];
+        NSMutableSet *currencySet=[NSMutableSet new];
+        for (int i=0; i<arrCurrency.count; i++) {
+            NSString *code=[[arrCurrency objectAtIndex:i] objectForKey:@"currencyCode"];
+            [currencySet addObject:code];
+        }
+        self.favoriteCurrencyCode=currencySet;
+        NSLog(@"%lu favorite currency from %@",(unsigned long)self.favoriteCurrencyCode.count,self.favoritePlistFilePath);
+    }else{
+        [[NSMutableDictionary new]writeToFile:self.favoritePlistFilePath atomically:YES];
+        NSLog(@"can't find custom favorite plist, so create one.");
+    }
+}
+-(void) addFavorite:(NSString *)currencyCode{
+    NSMutableSet *set=[[NSMutableSet alloc]initWithSet:self.favoriteCurrencyCode];
+    [set addObject:currencyCode];
+    self.favoriteCurrencyCode=[set copy];
+    NSMutableArray *arrCurrency=[NSMutableArray arrayWithContentsOfFile:self.favoritePlistFilePath];
+    //for (NSString *code in self.favoriteCurrencyCode) {
+    NSDictionary *newFavorite=[[NSDictionary alloc]initWithObjectsAndKeys:currencyCode,@"currencyCode", nil];
+    [arrCurrency addObject:newFavorite];
+    //}
+    [arrCurrency writeToFile:self.favoritePlistFilePath atomically:YES];
+    NSLog(@"add %@ to favorite list. @%@",currencyCode,self.class);
+}
+-(void) removeFavorite:(NSString *)currencyCode{
+    NSMutableSet *set=[[NSMutableSet alloc]initWithSet:self.favoriteCurrencyCode];
+    [set removeObject:currencyCode];
+    self.favoriteCurrencyCode=[set copy];
+
+    NSMutableArray *arrCurrency=[NSMutableArray arrayWithContentsOfFile:self.favoritePlistFilePath];
+    //for (NSString *code in self.favoriteCurrencyCode) {
+    NSDictionary *removeFavorite=[[NSDictionary alloc]initWithObjectsAndKeys:currencyCode,@"currencyCode", nil];
+    [arrCurrency removeObject:removeFavorite];
+    //}
+    [arrCurrency writeToFile:self.favoritePlistFilePath atomically:YES];
+    NSLog(@"remove %@ from favorite list. @%@",currencyCode,self.class);
+}
 -(NSMutableOrderedSet *)getExchangeRateFromTaiwanBankRateString:(NSString *)htmlString{
     NSMutableOrderedSet *currencySet=[NSMutableOrderedSet new];
     
@@ -117,6 +183,11 @@
             currency.cashSellingRate=[self fitSizeRate:cashSelling];
             currency.spotBuyingRate=[self fitSizeRate:spotBuying];
             currency.spotSellingRate=[self fitSizeRate:spotSelling];
+            if ([self.favoriteCurrencyCode containsObject:currencyCode]) {
+                currency.isFavorite=YES;
+            }else{
+                currency.isFavorite=NO;
+            }
             [currencySet addObject:currency];
         }
         if (theScanner.scanLocation>tagLocationTableAfter) {
@@ -129,6 +200,8 @@
     self.currencyArray=[[currencySet copy]allObjects];
     return currencySet;
 }
+/*! 調整匯率的小數位數。大於1 三位小數  ex:美金；0.xxx 四位小數  ex:日元；0.0xxx 五位小數  ex:韓元,印尼
+ */
 -(NSString *)fitSizeRate:(NSString *)rate{
     NSString *fitRat;
     if ([rate rangeOfString:@"0.0"].location != NSNotFound){

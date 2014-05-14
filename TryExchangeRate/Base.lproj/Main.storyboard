@@ -19,7 +19,7 @@
             </objects>
             <point key="canvasLocation" x="-806" y="-386"/>
         </scene>
-        <!--Rate ListTVC - ExchangeRate-->
+        <!--Rate ListTVC - 最後更新時間-->
         <scene sceneID="bGh-Yd-4VE">
             <objects>
                 <tableViewController id="zQr-rZ-zdb" customClass="RateListTVC" sceneMemberID="viewController">
@@ -73,14 +73,9 @@
                             <outlet property="delegate" destination="zQr-rZ-zdb" id="80c-6t-FzH"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="ExchangeRate" id="Dtm-Hi-Eue">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="JZW-3p-tpM">
-                            <connections>
-                                <action selector="refreshClicked:" destination="zQr-rZ-zdb" id="ZcE-HL-o8Y"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="最後更新時間" id="Dtm-Hi-Eue"/>
                     <connections>
+                        <outlet property="refreshView" destination="FhL-4d-ecw" id="WqO-Pj-irt"/>
                         <outlet property="updateDayTime" destination="cL4-8D-7NS" id="8Tz-1Q-L7W"/>
                     </connections>
                 </tableViewController>

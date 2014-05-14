@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface NWCustCellExchangeRate : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *flagImage;
 @property (weak, nonatomic) IBOutlet UILabel *currencyCode;
 @property (weak, nonatomic) IBOutlet UILabel *currencyName;
 @property (weak, nonatomic) IBOutlet UILabel *cashBuyingPrice;
 @property (weak, nonatomic) IBOutlet UILabel *cashSellingPrice;
 @property (weak, nonatomic) IBOutlet UILabel *spotBuyingPrice;
 @property (weak, nonatomic) IBOutlet UILabel *spotSellingPrice;
+@property (weak, nonatomic) IBOutlet UIButton *favorite;
+- (IBAction)clickFavorite:(UIButton *)sender;
 
 @end

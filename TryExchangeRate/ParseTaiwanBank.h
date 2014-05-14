@@ -12,4 +12,6 @@
 -(NSSet *)getExchangeRateFromTaiwanBankRateString:(NSString *)htmlString;
 @property NSArray * currencyArray;
 @property NSString *updateDayTimeString;
+-(void) addFavorite:(NSString *)currencyCode;
+-(void) removeFavorite:(NSString *)currencyCode;
 @end

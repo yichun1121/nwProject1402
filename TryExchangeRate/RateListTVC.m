@@ -21,6 +21,9 @@
 @property (nonatomic) NSURLSessionDownloadTask *downloadTask;
 @property (retain, nonatomic) UIDocumentInteractionController *documentInteractionController;
 @property (nonatomic)  NSArray *currencyArray;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (nonatomic, strong) IBOutlet UITableView * refreshView;    //(你要下拉更新的TableView)
+@property (nonatomic)  ParseTaiwanBank *twBank;
 @end
 static NSString *DownloadURLString =@"http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm";
 @implementation RateListTVC{
@@ -30,7 +33,13 @@ static NSString *DownloadURLString =@"http://rate.bot.com.tw/Pages/Static/UIP003
 
 }
 @synthesize currencyArray=_currencyArray;
-
+@synthesize twBank=_twBank;
+-(ParseTaiwanBank *)twBank{
+    if (!_twBank) {
+        _twBank=[ParseTaiwanBank new];
+    }
+    return _twBank;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -42,6 +51,11 @@ static NSString *DownloadURLString =@"http://rate.bot.com.tw/Pages/Static/UIP003
     //-----註冊CustomCell----------
     UINib* myCellNib = [UINib nibWithNibName:@"NWCustCellExchangeRate" bundle:nil];
     [self.tableView registerNib:myCellNib forCellReuseIdentifier:@"Cell"];
+    //-----設定refresh controller---------
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(refresh)
+                  forControlEvents:UIControlEventValueChanged];
+    [self.refreshView addSubview:self.refreshControl]; //把RefreshControl加到TableView中
     //-----檢查有沒有之前下載的檔----------
     NSFileManager *fileManager = [NSFileManager defaultManager];
     //手機APP裡的document資料夾（URLs的第0個就是了）
@@ -49,8 +63,11 @@ static NSString *DownloadURLString =@"http://rate.bot.com.tw/Pages/Static/UIP003
     NSURL *documentsDirectory = [URLs objectAtIndex:0];
     destinationURL = [documentsDirectory URLByAppendingPathComponent:@"UIP003.zh-TW.htm"];
     NSString *htmlString=[self readFileIntoString:destinationURL];
-    
-    [self pickCurrencyAndRateUpFromHtmlString:htmlString];
+    if (htmlString!=nil) {
+        [self pickCurrencyAndRateUpFromHtmlString:htmlString];
+    }else{
+        [self refresh];
+    }
     
 }
 /*! 設定NSURLSession.delegate=self（在viewDidLoad的時候就設好session了）
@@ -66,7 +83,9 @@ static NSString *DownloadURLString =@"http://rate.bot.com.tw/Pages/Static/UIP003
 	return session;
 }
 #pragma mark - 1 refresh事件
-- (IBAction)refreshClicked:(UIBarButtonItem *)sender {
+/*!下拉更新之後要做的事
+ */
+-(void) refresh{
     NSLog(@"step # %i %@ ----- %@",++stepCount,@"start",@"1");
 	if (self.downloadTask) {
         return;
@@ -78,8 +97,10 @@ static NSString *DownloadURLString =@"http://rate.bot.com.tw/Pages/Static/UIP003
     //發出request
 	self.downloadTask = [self.session downloadTaskWithRequest:request];
     [self.downloadTask resume];
-    
     //self.progressView.hidden = NO;
+    NSDateFormatter *dateFormatter=[NSDateFormatter new];
+    dateFormatter.dateFormat=@"MM/dd HH:mm:ss";
+    self.navigationItem.title=[NSString stringWithFormat:@"檢查時間: %@",[dateFormatter stringFromDate:[NSDate date] ]];
 }
 #pragma mark - 2 應該是check progress bar的過程
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
@@ -162,6 +183,8 @@ static NSString *DownloadURLString =@"http://rate.bot.com.tw/Pages/Static/UIP003
     double progress = (double)task.countOfBytesReceived / (double)task.countOfBytesExpectedToReceive;
 	dispatch_async(dispatch_get_main_queue(), ^{
 		//self.progressView.progress = progress;
+        
+        [self.refreshControl endRefreshing];
 	});
     
     self.downloadTask = nil;
@@ -202,9 +225,8 @@ static NSString *DownloadURLString =@"http://rate.bot.com.tw/Pages/Static/UIP003
 /*!從臺銀匯率html字串取得Currency陣列
  */
 -(void)pickCurrencyAndRateUpFromHtmlString:(NSString *)htmlString{
-    ParseTaiwanBank *twBank=[ParseTaiwanBank new];
-    self.currencyArray=[[twBank getExchangeRateFromTaiwanBankRateString:htmlString] allObjects];
-    self.updateDayTime.text=twBank.updateDayTimeString;
+    self.currencyArray=[[self.twBank getExchangeRateFromTaiwanBankRateString:htmlString] allObjects];
+    self.updateDayTime.text=self.twBank.updateDayTimeString;
     
 }
 // NEWCODE - New method
@@ -286,7 +308,16 @@ static NSString *DownloadURLString =@"http://rate.bot.com.tw/Pages/Static/UIP003
         cell.cashSellingPrice.text=@"現金賣出";
         cell.cashBuyingPrice.text=@"現金買入";
         cell.imageView.image=nil;
+        //----- button image -----
+        cell.favorite.imageView.image=nil;
+        cell.favorite.enabled=NO;
+        //----- button action -----
+        NSArray *btnActions= [cell.favorite actionsForTarget:nil forControlEvent:UIControlEventTouchUpInside];
+        if (btnActions) {
+            [cell.favorite removeTarget:self action:@selector(clickFavorite:) forControlEvents:UIControlEventTouchUpInside];
+        }
     }else{
+        //----- cell color ------
         if (cell.backgroundColor!=[UIColor clearColor]) {
             cell.backgroundColor=[UIColor clearColor];
             UIFont *rateFont=[UIFont fontWithName:cell.currencyCode.font.fontName size:16];
@@ -298,6 +329,7 @@ static NSString *DownloadURLString =@"http://rate.bot.com.tw/Pages/Static/UIP003
             }
             cell.currencyName.font=nameFont;
         }
+        //----- info -----
         long index=indexPath.row-1;
         if (index<self.currencyArray.count) {
             Currency *currency=self.currencyArray[indexPath.row-1];
@@ -308,9 +340,35 @@ static NSString *DownloadURLString =@"http://rate.bot.com.tw/Pages/Static/UIP003
             cell.cashSellingPrice.text=currency.cashSellingRate;
             cell.spotBuyingPrice.text=currency.spotBuyingRate;
             cell.spotSellingPrice.text=currency.spotSellingRate;
+            //----- button image -----
+            if (currency.isFavorite) {
+                cell.favorite.selected=YES;
+                cell.favorite.enabled=YES;
+            }else{
+                cell.favorite.selected=NO;
+                cell.favorite.enabled=YES;
+            }
+            //----- button action -----
+            NSArray *btnActions= [cell.favorite actionsForTarget:self forControlEvent:UIControlEventTouchUpInside];
+
+            if (!btnActions) {
+                [cell.favorite addTarget:self action:@selector(clickFavorite:) forControlEvents:UIControlEventTouchUpInside];
+            }
         }
         
     }
     return cell;
+}
+- (IBAction)clickFavorite:(UIButton *)sender{
+    UITableViewCell *cell=(UITableViewCell *)sender.superview.superview.superview;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    Currency *currency=[self.currencyArray objectAtIndex:indexPath.row-1];
+    currency.isFavorite=!currency.isFavorite;
+    if (currency.isFavorite) {
+        [self.twBank addFavorite:currency.codeISO];
+    }else{
+        [self.twBank removeFavorite:currency.codeISO];
+    }
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 @end

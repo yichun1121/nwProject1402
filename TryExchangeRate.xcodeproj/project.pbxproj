@@ -28,6 +28,7 @@
 		C9622060191B2CB5005EDAAB /* TryLoadURL.m in Sources */ = {isa = PBXBuildFile; fileRef = C962205F191B2CB5005EDAAB /* TryLoadURL.m */; };
 		C9622069191E91FF005EDAAB /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = C9622068191E91FF005EDAAB /* Currency.m */; };
 		C962206C191E931D005EDAAB /* ParseTaiwanBank.m in Sources */ = {isa = PBXBuildFile; fileRef = C962206B191E931D005EDAAB /* ParseTaiwanBank.m */; };
+		C96B78A3192219EF004D8A3F /* Favorite.plist in Resources */ = {isa = PBXBuildFile; fileRef = C96B78A2192219EF004D8A3F /* Favorite.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		C9622068191E91FF005EDAAB /* Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Currency.m; sourceTree = "<group>"; };
 		C962206A191E931D005EDAAB /* ParseTaiwanBank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseTaiwanBank.h; sourceTree = "<group>"; };
 		C962206B191E931D005EDAAB /* ParseTaiwanBank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseTaiwanBank.m; sourceTree = "<group>"; };
+		C96B78A2192219EF004D8A3F /* Favorite.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Favorite.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 		C962201C191A7198005EDAAB /* TryExchangeRate */ = {
 			isa = PBXGroup;
 			children = (
+				C96B78A1192219B2004D8A3F /* Resource */,
 				C9622025191A7198005EDAAB /* nwAppDelegate.h */,
 				C9622026191A7198005EDAAB /* nwAppDelegate.m */,
 				C9622057191A7C33005EDAAB /* CustView */,
@@ -225,6 +228,14 @@
 			name = CustController;
 			sourceTree = "<group>";
 		};
+		C96B78A1192219B2004D8A3F /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				C96B78A2192219EF004D8A3F /* Favorite.plist */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -303,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C962202F191A7198005EDAAB /* Images.xcassets in Resources */,
+				C96B78A3192219EF004D8A3F /* Favorite.plist in Resources */,
 				C9622021191A7198005EDAAB /* InfoPlist.strings in Resources */,
 				C9622059191A7CCE005EDAAB /* NWCustCellExchangeRate.xib in Resources */,
 				C962202A191A7198005EDAAB /* Main.storyboard in Resources */,
@@ -537,6 +549,7 @@
 				C9622047191A7198005EDAAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C9622048191A7198005EDAAB /* Build configuration list for PBXNativeTarget "TryExchangeRateTests" */ = {
 			isa = XCConfigurationList;
@@ -545,6 +558,7 @@
 				C962204A191A7198005EDAAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

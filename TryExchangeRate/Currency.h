@@ -15,6 +15,7 @@
 @property NSString *spotSellingRate;
 @property NSString *cashBuyingRate;
 @property NSString *cashSellingRate;
+@property BOOL isFavorite;
 
 -(id)initWithName:(NSString *)currencyName ISOCode:(NSString *)currencyISOCode;
 

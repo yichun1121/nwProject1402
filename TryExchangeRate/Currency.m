@@ -14,6 +14,7 @@
 -(id)initWithName:(NSString *)currencyName ISOCode:(NSString *)currencyISOCode{
     self.name=currencyName;
     self.codeISO=currencyISOCode;
+    self.isFavorite=NO;
     return self;
 }
 @end

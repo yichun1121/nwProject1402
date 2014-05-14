@@ -31,9 +31,23 @@
     
     [[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
 }
+
+#pragma mark - 在這裡檢查要不要copy一份plist到document裡面
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    //取得檔案路徑
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *filePath = [documentsDirectory stringByAppendingString:@"/CustFavorite.plist"];
+    //檢查檔案如果不存在，複製一份
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (![fileManager fileExistsAtPath: filePath]){
+        NSString *sysPlistPath=[[NSBundle mainBundle] pathForResource:@"Favorite" ofType:@"plist"];
+        //if ([fileManager isReadableFileAtPath:filePath] )
+        [fileManager copyItemAtPath:sysPlistPath toPath:filePath error:nil];
+        NSLog(@"copy system favorite file to %@",filePath);
+    }
     return YES;
 }
 							

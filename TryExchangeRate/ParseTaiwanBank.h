@@ -14,4 +14,6 @@
 @property NSString *updateDayTimeString;
 -(void) addFavorite:(NSString *)currencyCode;
 -(void) removeFavorite:(NSString *)currencyCode;
+@property (nonatomic)NSString *downloadURLString;
+@property (nonatomic) NSDate *checkDateTime;
 @end

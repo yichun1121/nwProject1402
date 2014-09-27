@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "nwAppDelegate.h"
+#import "NWCustCellExchangeRate.h"
 
-@interface RateListTVC : UITableViewController<NSURLSessionDelegate,UIDocumentInteractionControllerDelegate>
-
+@interface RateListTVC : UITableViewController<NSURLSessionDelegate,UIDocumentInteractionControllerDelegate,nwAppDelegateDelegate>
+-(NWCustCellExchangeRate *)configureCell:(NWCustCellExchangeRate *)cell AtIndexPath:(NSIndexPath *)indexPath;
+@property (nonatomic)  NSArray *currencyArray;
+-(void) reloadTableView;
 @end

@@ -13,10 +13,13 @@
 @property (nonatomic,readonly)NSString *favoritePlistFilePath;
 @end
 @implementation ParseTaiwanBank
+
+static NSString *taiwanBankRateHtmlString =@"http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm";
 @synthesize currencyArray=_currencyArray;
 @synthesize updateDayTimeString=_updateDayTimeString;
 @synthesize favoriteCurrencyCode=_favoriteCurrencyCode;
 @synthesize favoritePlistFilePath=_favoritePlistFilePath;
+@synthesize checkDateTime=_checkDateTime;
 
 
 -(NSString *)favoritePlistFilePath{
@@ -33,6 +36,10 @@
     }
     return _favoriteCurrencyCode;
 }
+-(NSString *)downloadURLString{
+    return taiwanBankRateHtmlString;
+}
+
 -(void)loadFavoritePlist{
     NSLog(@"loading favorite plist... @%@",self.class);
     if ([[NSFileManager new] fileExistsAtPath:self.favoritePlistFilePath]) {

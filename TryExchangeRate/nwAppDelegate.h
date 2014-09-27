@@ -8,11 +8,23 @@
 
 #import <UIKit/UIKit.h>
 #import "ParseTaiwanBank.h"
-@interface nwAppDelegate : UIResponder <UIApplicationDelegate>
+@class nwAppDelegate;
+@protocol nwAppDelegateDelegate <NSObject>
+-(void)reloadedFile;
+@end
+
+@interface nwAppDelegate : UIResponder <UIApplicationDelegate,NSURLSessionDataDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
 @property (nonatomic)  ParseTaiwanBank *twBank;
 @property (copy) void (^backgroundSessionCompletionHandler)();
 
+
+@property (nonatomic) NSURLSession *session;
+@property (nonatomic) NSURLSessionDownloadTask *downloadTask;
+@property (retain, nonatomic) UIDocumentInteractionController *documentInteractionController;
+
+@property (nonatomic) NSDateFormatter *dateFormatter;
+@property (weak,nonatomic) id<nwAppDelegateDelegate> delegate;
 @end
